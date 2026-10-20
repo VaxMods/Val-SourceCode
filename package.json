@@ -1,0 +1,54 @@
+{
+  "name": "val-protection",
+  "version": "1.1.0",
+  "description": "Val Protection - defensive Discord bot against raids, nukes, privilege abuse and automated attacks",
+  "license": "MIT",
+  "author": "Vax-Bex",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vax-Bex/Val-SourceCode.git"
+  },
+  "homepage": "https://github.com/Vax-Bex/Val-SourceCode#readme",
+  "bugs": {
+    "url": "https://github.com/Vax-Bex/Val-SourceCode/issues"
+  },
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "deploy-commands": "node dist/cli/deployCommands.js",
+    "deploy-commands:global": "node dist/cli/deployCommands.js --global",
+    "migrate": "node dist/cli/migrate.js",
+    "verify-logs": "node dist/cli/verifyLogs.js",
+    "backup": "node dist/cli/backup.js",
+    "restore-test": "node dist/cli/restoreTest.js",
+    "check-config": "node dist/cli/checkConfig.js",
+    "audit:deps": "npm audit --omit=dev"
+  },
+  "dependencies": {
+    "better-sqlite3": "13.0.3",
+    "discord.js": "14.27.0",
+    "ioredis": "6.0.0",
+    "kysely": "0.29.6",
+    "pg": "8.23.1",
+    "pino": "10.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "9.6.0",
+    "@types/node": "22.20.5",
+    "@types/pg": "8.23.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
+}

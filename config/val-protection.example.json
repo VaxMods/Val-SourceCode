@@ -1,0 +1,288 @@
+{
+  "version": 1,
+  "global": {
+    "allowedGuildIds": [],
+    "commandRateLimit": {
+      "limit": 6,
+      "windowSeconds": 30
+    },
+    "schedulerTickSeconds": 15,
+    "integrityCheckIntervalMinutes": 360,
+    "maxMembersForFullScan": 25000
+  },
+  "defaults": {
+    "mode": "monitor",
+    "alertChannelId": null,
+    "alertPingRoleId": null,
+    "securityAdminIds": [],
+    "auditorRoleIds": [],
+    "staffRoleIds": [],
+    "weakeningChangesRequireOwner": true,
+    "antiRaid": {
+      "enabled": true,
+      "windowSeconds": 30,
+      "minJoinsForRaid": 8,
+      "slowWaveWindowMinutes": 15,
+      "slowWaveSuspectCount": 6,
+      "adaptive": {
+        "enabled": true,
+        "halfLifeMinutes": 60,
+        "multiplier": 4,
+        "maxGrowthPerBucket": 1.25
+      },
+      "raidScoreThreshold": 60,
+      "suspectScoreThreshold": 60,
+      "newAccountDays": 7,
+      "weights": {
+        "accountAge": 35,
+        "noAvatar": 10,
+        "usernameCluster": 25,
+        "creationCluster": 20,
+        "rejoinAfterAction": 25,
+        "spammerFlag": 40
+      },
+      "suspectAction": "quarantine",
+      "actOnlyDuringRaid": true,
+      "quarantineRoleId": null,
+      "timeoutMinutes": 60,
+      "kickMinScore": 90,
+      "autoLockdown": true,
+      "raidCooldownMinutes": 5
+    },
+    "antiNuke": {
+      "enabled": true,
+      "response": "contain",
+      "minConfidenceToContain": "high",
+      "containBotsByKick": true,
+      "autoLockdownOnSeverity": "critical",
+      "lockdownThresholdFactor": 0.5,
+      "unattributedSpikeFactor": 2,
+      "thresholds": {
+        "channelCreate": {
+          "limit": 6,
+          "windowSeconds": 60
+        },
+        "channelDelete": {
+          "limit": 3,
+          "windowSeconds": 60
+        },
+        "channelUpdate": {
+          "limit": 10,
+          "windowSeconds": 60
+        },
+        "overwriteUpdate": {
+          "limit": 12,
+          "windowSeconds": 60
+        },
+        "roleCreate": {
+          "limit": 5,
+          "windowSeconds": 60
+        },
+        "roleDelete": {
+          "limit": 3,
+          "windowSeconds": 60
+        },
+        "roleUpdate": {
+          "limit": 6,
+          "windowSeconds": 60
+        },
+        "memberBan": {
+          "limit": 4,
+          "windowSeconds": 60
+        },
+        "memberKick": {
+          "limit": 5,
+          "windowSeconds": 60
+        },
+        "memberPrune": {
+          "limit": 1,
+          "windowSeconds": 3600
+        },
+        "memberRoleUpdate": {
+          "limit": 20,
+          "windowSeconds": 60
+        },
+        "webhookCreate": {
+          "limit": 3,
+          "windowSeconds": 300
+        },
+        "webhookUpdate": {
+          "limit": 6,
+          "windowSeconds": 300
+        },
+        "webhookDelete": {
+          "limit": 3,
+          "windowSeconds": 300
+        },
+        "botAdd": {
+          "limit": 2,
+          "windowSeconds": 600
+        },
+        "integrationCreate": {
+          "limit": 2,
+          "windowSeconds": 600
+        },
+        "integrationUpdate": {
+          "limit": 4,
+          "windowSeconds": 600
+        },
+        "integrationDelete": {
+          "limit": 2,
+          "windowSeconds": 600
+        },
+        "guildUpdate": {
+          "limit": 4,
+          "windowSeconds": 300
+        },
+        "commandPermissionUpdate": {
+          "limit": 3,
+          "windowSeconds": 600
+        }
+      }
+    },
+    "roleProtection": {
+      "enabled": true,
+      "treatDangerousRolesAsProtected": true,
+      "dangerousPermissions": [
+        "Administrator",
+        "ManageGuild",
+        "ManageRoles",
+        "ManageWebhooks",
+        "BanMembers",
+        "KickMembers",
+        "ManageChannels",
+        "ModerateMembers",
+        "MentionEveryone"
+      ],
+      "protectedRoleIds": [],
+      "authorizedGranterIds": [],
+      "revokeFromRecipient": true,
+      "granterResponse": "strip-role-management",
+      "minConfidenceToRevoke": "high",
+      "revokeWhenActorUnknown": false,
+      "revertUnauthorizedPermissionChanges": true,
+      "correlationDelayMs": 2500,
+      "correlationWindowSeconds": 15
+    },
+    "bots": {
+      "approvedBotIds": [],
+      "authorizedAdderIds": [],
+      "unapprovedAction": "alert",
+      "kickOnlyWhenAdderUnauthorized": true
+    },
+    "integrations": {
+      "authorizedManagerIds": [],
+      "unauthorizedWebhookAction": "alert"
+    },
+    "antiSpam": {
+      "enabled": true,
+      "burst": {
+        "maxMessages": 7,
+        "windowSeconds": 6
+      },
+      "duplicates": {
+        "max": 4,
+        "windowSeconds": 30
+      },
+      "maxMentions": 6,
+      "caps": {
+        "ratio": 0.8,
+        "minLength": 20
+      },
+      "maxRepeatedChars": 25,
+      "links": {
+        "blockedDomains": [],
+        "allowedDomains": [],
+        "flagInvites": true,
+        "flagShorteners": true,
+        "flagLookalikes": true,
+        "flagIpHosts": true
+      },
+      "threads": {
+        "max": 3,
+        "windowSeconds": 300
+      },
+      "strikeDecaySeconds": 600,
+      "timeoutMinutes": 10,
+      "warnCooldownSeconds": 30,
+      "exemptRoleIds": [],
+      "exemptChannelIds": [],
+      "floodSlowmode": {
+        "enabled": true,
+        "distinctUsers": 5,
+        "windowSeconds": 15,
+        "slowmodeSeconds": 10,
+        "durationMinutes": 10
+      }
+    },
+    "honeypot": {
+      "enabled": true,
+      "decoyRoleIds": [],
+      "decoyChannelIds": [],
+      "forbiddenCommandPatterns": [
+        "!nuke",
+        "!massban",
+        "!banall",
+        "!kickall",
+        "!raid",
+        ".nuke"
+      ],
+      "correlationWindowMinutes": 60,
+      "escalationScore": 4,
+      "escalationAction": "alert",
+      "timeoutMinutes": 60
+    },
+    "lockdown": {
+      "maxDurationMinutes": 120,
+      "raiseVerificationLevel": true,
+      "verificationLevel": "High",
+      "pauseInvites": true,
+      "quarantineNewMembers": true,
+      "restrictProtectedRoleGrants": true,
+      "suspendNonEssential": true
+    },
+    "backups": {
+      "enabled": true,
+      "intervalMinutes": 360,
+      "keep": 14
+    },
+    "logging": {
+      "retentionDays": 180
+    }
+  },
+  "guilds": {
+    "123456789012345678": {
+      "mode": "monitor",
+      "alertChannelId": "223456789012345678",
+      "alertPingRoleId": "323456789012345678",
+      "securityAdminIds": [
+        "423456789012345678"
+      ],
+      "auditorRoleIds": [
+        "523456789012345678"
+      ],
+      "staffRoleIds": [
+        "623456789012345678"
+      ],
+      "antiRaid": {
+        "quarantineRoleId": "723456789012345678"
+      },
+      "roleProtection": {
+        "protectedRoleIds": [
+          "823456789012345678"
+        ],
+        "authorizedGranterIds": []
+      },
+      "bots": {
+        "approvedBotIds": [],
+        "authorizedAdderIds": []
+      },
+      "honeypot": {
+        "decoyRoleIds": [
+          "923456789012345678"
+        ],
+        "decoyChannelIds": []
+      }
+    }
+  }
+}

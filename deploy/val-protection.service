@@ -1,0 +1,45 @@
+[Unit]
+Description=Val Protection Discord security bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=valprotection
+Group=valprotection
+WorkingDirectory=/opt/val-protection
+EnvironmentFile=/etc/val-protection/val-protection.env
+ExecStartPre=/usr/bin/node /opt/val-protection/dist/cli/checkConfig.js
+ExecStart=/usr/bin/node /opt/val-protection/dist/index.js
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=300
+StartLimitBurst=10
+TimeoutStopSec=30
+KillSignal=SIGTERM
+UMask=0077
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadWritePaths=/var/lib/val-protection /var/log/val-protection /var/backups/val-protection
+
+[Install]
+WantedBy=multi-user.target
