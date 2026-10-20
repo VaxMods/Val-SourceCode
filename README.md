@@ -1,7 +1,5 @@
 # Val Protection
 
-[![CI](https://github.com/Vax-Bex/Val-SourceCode/actions/workflows/ci.yml/badge.svg)](https://github.com/Vax-Bex/Val-SourceCode/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
 Val Protection is a defensive Discord bot that protects a server against raids, malicious bots, server takeovers ("nukes"), privilege abuse and automated attacks. It is written in TypeScript on top of discord.js 14, stores its state in SQLite or PostgreSQL, and can optionally use Redis for distributed counters and locks.
 
 Val Protection is built around one principle: **be honest about what Discord allows**. Discord does not let any bot block an action *before* it happens. Val Protection detects actions as soon as Discord reports them, identifies the author with an explicit confidence level, responds proportionally within the role hierarchy, records tamper-evident evidence and keeps humans in the loop whenever there is doubt. It never pretends to restrict the server owner, to undelete deleted objects, or to bypass Discord's permission hierarchy.
